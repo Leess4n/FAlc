@@ -12,7 +12,7 @@
 #include "RecursiveFunctionManager.hxx"
 
 /*
-The following codes runs a simulation of the Lorentz Attractor using the FractalAlchemy header library.
+The following codes runs a simulation of the Lorentz Attractor using the FAlc header library.
 */
 
 // First create instances of the Lorentz Attractor's differential equations. The parameters of the equation are stored in the instances
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
         Z.InitX0();                               // only intialize initial condition because domain has been initialized in previous object
 
         // create an array of the relations (the managers will use them to update the system)
-        FunctionRelation<float> *params[3] = {X.getRelation(), Y.getRelation(), Z.getRelation()};
+        FunctionRelation<float> *params[3] = {&X, &Y, &Z};
 
         // iteratively modify the domain
         for (int i=1;i<100000;i++)
@@ -111,8 +111,8 @@ int main(int argc, char *argv[])
                 X.modifyFromPrev(i, params);
                 Y.modifyFromPrev(i, params);
                 Z.modifyFromPrev(i, params);
-                // for example write the coordinates in itinere, but it will slow down the running
-                // ===============================================================================
+                // for example write the coordinates in itinere
+                // ============================================
                 LorentzAttractor << X.getImageElem(i) << "," << Y.getImageElem(i) << "," << Z.getImageElem(i) << "," << std::endl;
             }
             

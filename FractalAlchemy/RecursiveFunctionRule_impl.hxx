@@ -38,6 +38,8 @@ inline const T RecursiveFunctionRule<T>::getInitValue()
     return x0;
 }
 
+// Removable stuff
+
 template<real T>
 inline const T RecursiveFunctionRule<T>::getFromPreviousInImage(FunctionRelation<T> **params, const size_t i) const
 {

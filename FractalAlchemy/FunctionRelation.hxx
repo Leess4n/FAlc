@@ -28,10 +28,11 @@ public:
     ~FunctionRelation();                              // Default ctor
 
     // populate whole domain and image
-    void populateDomainFromInterval(const T x0, const T x1); // evenly spaces out points in the domain from a given interval 
-    void populateImageFromSimpleFunc(FunctionRule<T> &f);    // given a FunctionRule object creates an image calling the operator() of the function
+    void populateDomainFromInterval(const T x0, const T x1);                                            // evenly spaces out points in the domain from a given interval 
+    void populateImageFromSimpleFunc(FunctionRule<T> &f);                                               // given a FunctionRule object creates an image calling the operator() of the function
     void populateImageFromSingleRecursiveFunc(RecursiveFunctionRule<T> &f, FunctionRelation<T> **func); // creates an image from a recursive function
-    void modifyFromSimpleFunc(FunctionRule<T> &f, const unsigned int i);  // modifies the image using the rule of `f` to the element of index `i` in the domain
+    // modify image
+    void modifyFromSimpleFunc(FunctionRule<T> &f, const unsigned int i);                                                            // modifies the image using the rule of `f` to the element of index `i` in the domain
     inline void modifyFromPrevRecursiveFunc(const RecursiveFunctionRule<T> &f, const unsigned int i, FunctionRelation<T> **params); // modifies an element in the image at index `i` using rule `f` on the previous value
     inline void modifyFromLastRecursiveFunc(const RecursiveFunctionRule<T> &f, const unsigned int i, FunctionRelation<T> **params); // modifies the last element in the image at index `i` using rule `f` on the previous value
  
